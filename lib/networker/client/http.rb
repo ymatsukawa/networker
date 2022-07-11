@@ -6,11 +6,11 @@ require "faraday/net_http"
 module Networker
   module Client
     class Http
-      def initialize(url, headers, params)
+      def initialize(url, req_headers, params)
         Faraday.default_adapter = :net_http
 
         @url = url
-        @req_headers = headers
+        @req_headers = req_headers
         @params = params
 
         @status = -1
@@ -38,7 +38,7 @@ module Networker
         @body = res.body
       end
 
-      attr_reader :client, :url, :req_headers, :params
+      attr_reader :url, :req_headers, :params
     end
   end
 end

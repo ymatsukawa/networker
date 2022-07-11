@@ -7,8 +7,7 @@ module Networker
     class Http
       def self.req(opts)
         self.request_options = opts
-
-        @client = Networker::Client::Http.new(@url, @headers, @options)
+        @client = Networker::Client::Http.new(@url, @headers, @params)
         client_request
 
         { status: @client.status, headers: @client.headers, body: @client.body }
@@ -17,9 +16,9 @@ module Networker
       def self.client_request
         case @method
         when "GET"
-          @client.get(@options["query"])
+          @client.get
         when "POST"
-          # nope in v0.0.1
+          @client.post
         else
           raise StandardError
         end
@@ -29,16 +28,14 @@ module Networker
         @method = opts["method"]
         @url = [opts["scheme"], opts["host"]].join("://") + opts["path"]
         @headers = opts["headers"]
-
-        options = opts["options"].nil? ? {} : opts["options"]
-        @options = options
+        @params = opts["params"]
       end
 
-      private_class_method :request_options=
+      private_class_method :client_request, :request_options=
 
       private
 
-      attr_reader :client, :method, :url, :headers, :options
+      attr_reader :client, :method, :url, :headers, :params
     end
   end
 end

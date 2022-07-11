@@ -8,7 +8,7 @@ module Networker
   module VERSION
     MAJOR = 0
     MINOR = 0
-    TINY  = 1
+    TINY  = 2
 
     CODE = [MAJOR, MINOR, TINY].compact.join(".")
   end

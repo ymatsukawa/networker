@@ -12,11 +12,21 @@ RSpec.describe Networker do
     context "when request by file" do
       subject { Networker::Http.req(opt_key, opt_val) }
       let(:opt_key) { :file }
-      let(:opt_val) { "spec/FILES/http_basic.json" }
-
-      it "should run process" do
-        expect { subject }.not_to raise_error
+      where(:file_name) do
+        [
+          "spec/FILES/http_get.json",
+          "spec/FILES/http_get_query.json",
+          "spec/FILES/http_post.json"
+        ]
       end
+      with_them do
+        let(:opt_val) { file_name }
+
+        it "should run process" do
+          expect { subject }.not_to raise_error
+        end
+      end
+
     end
   end
 end

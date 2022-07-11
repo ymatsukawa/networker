@@ -14,7 +14,7 @@ module Networker
       def self.file_to_map(path)
         case File.extname(path)
         when ".yaml", ".yml"
-          # nope in v0.0.1
+          # nope in v0.0.2
         when ".json"
           JSON.parse(File.read(path))
         else

@@ -5,7 +5,7 @@ RSpec.describe Networker::Parser::OptionParser do
     context "when options are valid" do
       where(:opts) do
         [
-          [[:file, "./spec/FILES/http_basic.json"]],
+          [[:file, "./spec/FILES/http_get.json"]],
           [[:file, 12345]]
         ]
       end

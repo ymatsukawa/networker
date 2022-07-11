@@ -19,7 +19,9 @@ require 'networker'
 Networker::Http.req(:file, '/path/to/request_file.json')
 ```
 
-example format is in [spec/FILES](./spec/FILES)
+example file format is in [spec/FILES](./spec/FILES)
+
+* `params` equals `query params` or `post body`
 
 ## Testing
 

@@ -8,7 +8,7 @@ RSpec.describe Networker::Parser::MapFile do
       where(:path_, :expected_) do
         [
           [
-            "spec/FILES/http_basic.json",
+            "spec/FILES/http_get.json",
             { "method" => "GET", "scheme" => "http", "host" => "localhost:3000", "path" => "/example/html", "headers" => {} }
           ]
         ]

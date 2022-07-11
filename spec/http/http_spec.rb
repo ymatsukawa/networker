@@ -7,9 +7,9 @@ RSpec.describe Networker::Http do
     subject { Networker::Http.req(opt_key, opt_val) }
 
     context "when options are valid" do
-      context "when option means "read json file"" do
+      context "when option means - read json file" do
         let(:opt_key) { :file }
-        let(:opt_val) { "spec/FILES/http_basic.json" }
+        let(:opt_val) { "spec/FILES/http_get.json" }
         let(:request_map) do
           { "method" => "GET", "scheme" => "http", "host" => "example.com", "path" => "/" }
         end

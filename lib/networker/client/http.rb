@@ -6,26 +6,26 @@ require "faraday/net_http"
 module Networker
   module Client
     class Http
-      def initialize(url, req_headers, options)
+      def initialize(url, headers, params)
         Faraday.default_adapter = :net_http
+
+        @url = url
+        @req_headers = headers
+        @params = params
 
         @status = -1
         @headers = ""
         @body = ""
-
-        @url = url
-        @req_headers = req_headers
-        @options = options
       end
 
-      def get(query = nil)
-        params = query.nil? ? {} : query
-        client = Faraday.new(url: @url, params: params, headers: @req_headers)
-        self.response = client.get
+      def get
+        self.response = Faraday.new(url: @url, params: @params, headers: @req_headers).get
       end
 
-      def post(body = nil)
-        # nope in v0.0.1
+      def post
+        self.response = Faraday.new(url: @url, headers: @req_headers).post do |f|
+          f.body = @params unless @params.nil?
+        end
       end
 
       attr_reader :status, :headers, :body
@@ -38,7 +38,7 @@ module Networker
         @body = res.body
       end
 
-      attr_reader :url, :req_headers, :options
+      attr_reader :client, :url, :req_headers, :params
     end
   end
 end

@@ -20,7 +20,7 @@ RSpec.describe Networker::Facade::Http do
         end
         let(:url) { [options["scheme"], options["host"]].join("://") + options["path"] }
         let(:headers) { options["headers"] }
-        let(:req_options) { options["options"] }
+        let(:req_options) { options["params"] }
         let(:response) do
           {
             status: 200,
@@ -35,7 +35,7 @@ RSpec.describe Networker::Facade::Http do
             allow(client).to receive(mock_key).and_return(response[mock_key])
           end
         end
-        it "should respond as json case" do
+        it "should respond as json file case" do
           subject
 
           expect(Networker::Client::Http).to have_received(:new).with(url, headers, req_options)

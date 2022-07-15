@@ -33,7 +33,7 @@ Networker::Http.req(:file, './spec/FILES/http_get.json')
 
 example file format is in [spec/FILES](./spec/FILES)
 
-* `params` equals `query params` or `post body`
+* `params` equals `query params` or `body of post, put or delete`
 
 ## Testing
 
@@ -43,6 +43,10 @@ $ rake test:server
 # on another console
 $ rspec spec
 ```
+
+When source code is changed on server running, please restart.
+
+Hot-reload is not supported.
 
 ## License
 

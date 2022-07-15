@@ -19,6 +19,10 @@ module Networker
           @client.get
         when "POST"
           @client.post
+        when "PUT"
+          @client.put
+        when "DELETE"
+          @client.delete
         else
           raise StandardError
         end

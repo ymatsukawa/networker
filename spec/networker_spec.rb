@@ -16,7 +16,8 @@ RSpec.describe Networker do
         [
           "spec/FILES/http_get.json",
           "spec/FILES/http_get_query.json",
-          "spec/FILES/http_post.json"
+          "spec/FILES/http_post.json",
+          "spec/FILES/http_put.json",
         ]
       end
       with_them do

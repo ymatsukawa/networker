@@ -67,11 +67,4 @@ RSpec.describe Networker::Client::Http do
     end
   end
 
-
-
-
-  describe "#get" do
-
-  end
-
 end

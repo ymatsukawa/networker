@@ -25,3 +25,26 @@ post "/example/machine" do
     erb :html_machine_created
   end
 end
+
+put "/example/clothes" do
+  necktie = params[:necktie]
+  suit = params[:suit]
+
+  if necktie.nil? || suit.nil?
+    return 400
+  else
+    status 200
+    erb :html_clothes_updated
+  end
+end
+
+delete "/example/paper" do
+  paper_id = params[:paper_id]
+
+  if paper_id.nil?
+    return 400
+  else
+    status 200
+    erb :html_paper_deleted
+  end
+end
